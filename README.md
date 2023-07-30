@@ -10,7 +10,7 @@ Aplicação que permite empresa manter o controle de projetos
  - Descricao
  - Previsão data inicial
  - Previsão data final
- - Previsão orçamento
+ - Previsão orçamento R$
  - Número de pessoas no projeto
 
 ## Listagem de projetos
