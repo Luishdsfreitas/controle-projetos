@@ -14,7 +14,7 @@ Aplicação que permite empresa manter o controle de projetos
  funcionários
  
 - cadastrado de funcionarios no proejto
- nome
+ -- nome
  matricula
  projeto
 
