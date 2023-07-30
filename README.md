@@ -1,21 +1,21 @@
 # controle-projetos
 
-## Descrição
+# Descrição
 Aplicação que permite empresa manter o controle de projetos
 
-## Funcionalidades
+# Funcionalidades
 
-- Cadastro de projeto
- Título
- Descricao
- previsão data inicial
- previsão data final
- previsão orçamento
- funcionários
+## Cadastro de projeto
+ - Título
+ - Descricao
+ - Previsão data inicial
+ - Previsão data final
+ - Previsão orçamento
+ - Funcionários
  
-- cadastrado de funcionarios no proejto
- -- nome
- matricula
- projeto
+ ## Cadastrado de funcionários no projeto
+ - Nome
+ - Matrícula
+ - Projeto
 
-*** No projeto um funcionário só poderá estar em um projeto
+- OBS.  No projeto um funcionário só poderá estar em um projeto
