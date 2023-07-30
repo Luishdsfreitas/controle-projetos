@@ -17,5 +17,7 @@ Aplicação que permite empresa manter o controle de projetos
  - Nome
  - Matrícula
  - Projeto
+ - OBS.  No projeto um funcionário só poderá estar em um projeto
 
-- OBS.  No projeto um funcionário só poderá estar em um projeto
+## Listagem de projetos
+- Retornar os projetos cadastrados
