@@ -14,13 +14,15 @@ export class CadastroProjetoComponent {
 
   mensagemOutput: string = '';
 
+  numero: number | undefined;
+
   receberOutput(msg: string) {
     this.mensagemOutput = msg;
   }
 
   ngOnInit(){
     this.route.queryParams.subscribe((params) => {
-      console.log(params['numero'])
+      this.numero = (params['numero'])
   });
   }
 
