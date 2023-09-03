@@ -2,13 +2,11 @@ header {
     background-color: #45695b;
     color: #fff;
     padding: 10px;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     width: 100%;
   }
   
   .nomeProjeto {
-    text-align: right;
+    text-align: center;
     margin: 0;
   }
