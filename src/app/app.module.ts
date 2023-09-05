@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeProjetoComponent } from './home-projeto/home-projeto.component';
 import { DetalheProjetoComponent } from './detalhe-projeto/detalhe-projeto.component';
 import { FormsModule } from '@angular/forms';
-import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -23,8 +22,7 @@ import { TextMaskModule } from 'angular2-text-mask';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    TextMaskModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
