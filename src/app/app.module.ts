@@ -8,6 +8,8 @@ import { CadastroProjetoComponent } from './cadastro-projeto/cadastro-projeto.co
 import { AppRoutingModule } from './app-routing.module';
 import { HomeProjetoComponent } from './home-projeto/home-projeto.component';
 import { DetalheProjetoComponent } from './detalhe-projeto/detalhe-projeto.component';
+import { FormsModule } from '@angular/forms';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import { DetalheProjetoComponent } from './detalhe-projeto/detalhe-projeto.compo
     CabecalhoComponent,
     CadastroProjetoComponent,
     HomeProjetoComponent,
-    DetalheProjetoComponent
+    DetalheProjetoComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    TextMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]
