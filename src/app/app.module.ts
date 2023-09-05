@@ -8,6 +8,7 @@ import { CadastroProjetoComponent } from './cadastro-projeto/cadastro-projeto.co
 import { AppRoutingModule } from './app-routing.module';
 import { HomeProjetoComponent } from './home-projeto/home-projeto.component';
 import { DetalheProjetoComponent } from './detalhe-projeto/detalhe-projeto.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +17,12 @@ import { DetalheProjetoComponent } from './detalhe-projeto/detalhe-projeto.compo
     CabecalhoComponent,
     CadastroProjetoComponent,
     HomeProjetoComponent,
-    DetalheProjetoComponent
+    DetalheProjetoComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
