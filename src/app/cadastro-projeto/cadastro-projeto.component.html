@@ -1,0 +1,66 @@
+<div style="display: flex; justify-content: center; align-items: center; min-height: 70vh;">
+    <form #form="ngForm" (ngSubmit)="salvarProjeto()" style="max-width: 400px;">
+      <div class="form-group">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" class="form-control" [(ngModel)]="projeto.titulo" required #titulo="ngModel" pattern="(?:\b[A-Z][a-zA-Z]*\b\s*)+">
+        <div *ngIf="titulo.invalid && titulo.touched" class="text-danger">
+          <div *ngIf="titulo.errors?.['required']">Título é obrigatório.</div>
+          <div *ngIf="titulo.errors?.['pattern']">
+            Cada palavra deve começar com uma letra maiúscula.
+          </div>
+        </div> 
+    </div>
+      <div class="form-group">
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao" class="form-control" [(ngModel)]="projeto.descricao" required #descricao="ngModel" pattern="^.{0,30}$">
+        <div *ngIf="descricao.invalid && descricao.touched" class="text-danger">
+          <div *ngIf="descricao.errors?.['required']">Descrição é obrigatório.</div>
+          <div *ngIf="descricao.errors?.['pattern']">
+            Máximo 30 caracteres para descrição
+          </div>
+        </div> 
+      </div>
+      <div class="form-group">
+        <label for="previsaoDataInicial">Previsão Data Inicial:</label>
+        <input type="date" id="previsaoDataInicial" name="previsaoDataInicial" class="form-control" [(ngModel)]="projeto.previsaoDataInicial" #previsaoDataInicial="ngModel"required>
+        <div *ngIf="validarDataAnterior() || previsaoDataInicial.invalid" class="text-danger">
+          Obrigatório informar a data e esta não pode ser igual ou anterior ao dia corrente.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="previsaoDataFinal">Previsão Data Final:</label>
+        <input type="date" id="previsaoDataFinal" name="previsaoDataFinal" class="form-control" [(ngModel)]="projeto.previsaoDataFinal" #previsaoDataFinal ="ngModel" required>
+        <div *ngIf="validarDataFinal() || previsaoDataFinal.invalid" class="text-danger">
+          Obrigatório informar a data e esta não pode ser menor ou igual que previsão data inicial.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="previsaoOrcamento">Previsão Orçamento R$:</label>
+        <input type="number" id="previsaoOrcamento" name="previsaoOrcamento" class="form-control" [(ngModel)]="projeto.previsaoOrcamento" #previsaoOrcamento="ngModel" pattern="^[1-9]\d*$" required min="0">
+        <div *ngIf="previsaoOrcamento.invalid && previsaoOrcamento.touched" class="text-danger">
+          <div *ngIf="previsaoOrcamento.errors?.['required']">Orçamento é obrigatório.</div>
+          <div *ngIf="previsaoOrcamento.errors?.['pattern']">
+            Orçamento deve ser maior que zero.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="numeroPessoas">Número de Pessoas no Projeto:</label>
+        <input type="number" id="numeroPessoas" name="numeroPessoas" class="form-control" [(ngModel)]="projeto.numeroPessoas" #numeroPessoas="ngModel"  pattern="^[1-9]\d*$" required min="0">
+        <div *ngIf="numeroPessoas.invalid && numeroPessoas.touched" class="text-danger">
+          <div *ngIf="numeroPessoas.errors?.['required']">Orçamento é obrigatório.</div>
+          <div *ngIf="numeroPessoas.errors?.['pattern']">
+            Número de pessoas no projeto deve ser maior que zero.
+          </div>
+        </div>
+      </div>
+      <div class="form-group" style="margin-top: 20px;">
+        <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Salvar</button>
+      </div>
+     </form>
+  </div>
+
+<!-- <p>{{mensagem}}</p>
+<app-detalhe-projeto (eventoOutput)="receberOutput($event)"></app-detalhe-projeto>
+<p>{{ mensagemOutput }}</p>
+<p>Atributo passado via query param = {{numero}}</p> -->
