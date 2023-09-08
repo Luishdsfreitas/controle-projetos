@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeProjetoComponent } from './home-projeto/home-projeto.component';
 import { DetalheProjetoComponent } from './detalhe-projeto/detalhe-projeto.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ProjetoService } from './services/projeto.service';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,10 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ProjetoService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

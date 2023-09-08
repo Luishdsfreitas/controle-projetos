@@ -1,7 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Projeto } from '../model/projeto';
-import { LocalStorageService } from '../localstorage/local-storage.service';
+
+import { NgForm } from '@angular/forms';
+import { ProjetoService } from '../services/projeto.service';
 
 @Component({
   selector: 'app-cadastro-projeto',
@@ -9,12 +11,18 @@ import { LocalStorageService } from '../localstorage/local-storage.service';
   styleUrls: ['./cadastro-projeto.component.css']
 })
 export class CadastroProjetoComponent {
+  @ViewChild('form') form!: NgForm;
 
-  projeto: Projeto;
+  @Input() projeto: Projeto;
   exibirMensagem = false;
+  mostrarSalvar = false;
 
-  constructor(private localStorage: LocalStorageService) {
-    this.projeto = new Projeto('', '', new Date(), new Date(), 0, 0);
+  isShowMessage: boolean = false;
+  isSuccess!: boolean;
+  message!: string;
+
+  constructor(private projetoService: ProjetoService) {
+    this.projeto = new Projeto('', '', '', new Date(), new Date(), 0, 0);
   }
 
 
@@ -31,8 +39,28 @@ export class CadastroProjetoComponent {
   }
 
   salvarProjeto() {
-    console.log('Projeto a ser salvo:', this.projeto);
-    this.localStorage.salvarProjeto(this.projeto);
+    this.projetoService
+    .salvarProjeto(this.projeto)
+    .then(() => {
+    this.mostrarSalvar = true;
+    this.isShowMessage = true;
+    this.isSuccess = true;
+    this.message = 'Cadastro realizado com sucesso!';
+    })
+    .catch((error) => {
+      console.error('Erro ao salvar projeto', error);
+      this.mostrarSalvar = true;
+      this.isShowMessage = true;
+      this.isSuccess = true;
+      this.message = 'Erro ao realizar cadastro!';
+    });
+  }
+
+  novoCadastro(){
+    this.isShowMessage = false;
+    this.isSuccess = false;
+    this.mostrarSalvar = false;
+    this.form.reset();
   }
 
   // constructor(private route: ActivatedRoute, private router: Router){}
