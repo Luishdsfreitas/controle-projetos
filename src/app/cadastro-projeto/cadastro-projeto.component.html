@@ -1,5 +1,4 @@
 <div
-        id="msg-login"
         class="card-panel white-text"
         [class.red]="!this.isSuccess"
         [class.green]="this.isSuccess"
@@ -16,7 +15,7 @@
         <div *ngIf="titulo.invalid && titulo.touched" class="text-danger">
           <div *ngIf="titulo.errors?.['required']">Título é obrigatório.</div>
           <div *ngIf="titulo.errors?.['pattern']">
-            Cada palavra deve começar com uma letra maiúscula.
+            Permitido somente letras e cada título deve iniciar com maiúscula.
           </div>
         </div> 
     </div>
@@ -70,8 +69,3 @@
       </div>
      </form>
   </div>
-
-<!-- <p>{{mensagem}}</p>
-<app-detalhe-projeto (eventoOutput)="receberOutput($event)"></app-detalhe-projeto>
-<p>{{ mensagemOutput }}</p>
-<p>Atributo passado via query param = {{numero}}</p> -->

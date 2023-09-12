@@ -51,7 +51,7 @@ export class CadastroProjetoComponent {
       console.error('Erro ao salvar projeto', error);
       this.mostrarSalvar = true;
       this.isShowMessage = true;
-      this.isSuccess = true;
+      this.isSuccess = false;
       this.message = 'Erro ao realizar cadastro!';
     });
   }
@@ -62,24 +62,5 @@ export class CadastroProjetoComponent {
     this.mostrarSalvar = false;
     this.form.reset();
   }
-
-  // constructor(private route: ActivatedRoute, private router: Router){}
-
-  // @Input() mensagem: string = '';
-
-  // mensagemOutput: string = '';
-
-  // numero: number | undefined;
-
-  // receberOutput(msg: string) {
-  //   this.mensagemOutput = msg;
-  // }
-
-  // ngOnInit(){
-  //   this.route.queryParams.subscribe((params) => {
-  //     this.numero = (params['numero'])
-  // });
-  // }
-
 
 }
