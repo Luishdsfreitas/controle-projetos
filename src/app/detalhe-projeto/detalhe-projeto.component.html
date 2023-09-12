@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="content">
+    <div *ngIf="projeto">
+      <h3 class="detalhe">Detalhes do Projeto:</h3>
+      <p class="detalhe">Id: {{ projeto.id }}</p>
+      <p class="detalhe">Título: {{ projeto.titulo }}</p>
+      <p class="detalhe">Descrição: {{ projeto.descricao }}</p>
+      <p class="detalhe">
+        Previsão Data Inicial: {{ projeto.previsaoDataInicial | date: 'dd/MM/yyyy' }}
+      </p>
+      <p class="detalhe">
+        Previsão Data Final: {{ projeto.previsaoDataFinal | date: 'dd/MM/yyyy' }}
+      </p>
+      <p class="detalhe">Previsão Orçamento: {{ projeto.previsaoOrcamento | currency: 'BRL' }}</p>
+      <p class="detalhe">Número Pessoas: {{ projeto.numeroPessoas }}</p>
+    </div>
+  </div>
+</div>

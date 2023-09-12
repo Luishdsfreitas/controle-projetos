@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+  }
+  
+  .content {
+    text-align: center;
+  }
+
+  .detalhe {
+    color: #45695b;
+}
