@@ -1,22 +1,50 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  Input,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Projeto } from '../model/projeto';
-import { LocalStorageService } from '../localstorage/local-storage.service';
+
+import { NgForm } from '@angular/forms';
+import { ProjetoService } from '../services/projeto.service';
 
 @Component({
   selector: 'app-cadastro-projeto',
   templateUrl: './cadastro-projeto.component.html',
-  styleUrls: ['./cadastro-projeto.component.css']
+  styleUrls: ['./cadastro-projeto.component.css'],
 })
 export class CadastroProjetoComponent {
+  @ViewChild('form') form!: NgForm;
+  @Input() projeto: Projeto;
+  id: string | undefined;
 
-  projeto: Projeto;
   exibirMensagem = false;
+  mostrarSalvar = false;
 
-  constructor(private localStorage: LocalStorageService) {
-    this.projeto = new Projeto('', '', new Date(), new Date(), 0, 0);
+  isShowMessage: boolean = false;
+  isSuccess!: boolean;
+  message!: string;
+
+  constructor(
+    private route: ActivatedRoute,
+    private projetoService: ProjetoService
+  ) {
+    this.projeto = new Projeto('', '', '', new Date(), new Date(), 0, 0);
   }
 
+  ngOnInit() {
+    this.route.params.subscribe((params) => {
+      this.id = params['id'];
+      if (this.id) {
+        this.projetoService
+          .buscarDetalhesProjetoPorId(this.id)
+          .subscribe((data) => {
+            this.projeto = data[0];
+          });
+      }
+    });
+  }
 
   validarDataAnterior(): boolean {
     const currentDate = new Date();
@@ -31,27 +59,53 @@ export class CadastroProjetoComponent {
   }
 
   salvarProjeto() {
-    console.log('Projeto a ser salvo:', this.projeto);
-    this.localStorage.salvarProjeto(this.projeto);
+    if (!this.projeto.id) {
+      this.salvarProjetoService();
+    } else {
+      this.atualizarProjetoService();
+    }
   }
 
-  // constructor(private route: ActivatedRoute, private router: Router){}
+  salvarProjetoService() {
+    this.projetoService
+      .salvarProjeto(this.projeto)
+      .then(() => {
+        this.mostrarSalvar = true;
+        this.isShowMessage = true;
+        this.isSuccess = true;
+        this.message = 'Cadastro realizado com sucesso!';
+      })
+      .catch((error) => {
+        console.error('Erro ao salvar projeto', error);
+        this.mostrarSalvar = false;
+        this.isShowMessage = true;
+        this.isSuccess = false;
+        this.message = 'Erro ao realizar cadastro!';
+      });
+  }
 
-  // @Input() mensagem: string = '';
+  atualizarProjetoService() {
+    this.projetoService
+      .atualizarProjeto(this.projeto)
+      .subscribe(() => {
+        this.mostrarSalvar = true;
+        this.isShowMessage = true;
+        this.isSuccess = true;
+        this.message = 'Cadastro atualizado com sucesso!';
+      },
+      (error) => {
+        console.error('Erro ao atualizar projeto', error);
+        this.mostrarSalvar = false;
+        this.isShowMessage = true;
+        this.isSuccess = false;
+        this.message = 'Erro ao atualizar cadastro!';
+      });
+  }
 
-  // mensagemOutput: string = '';
-
-  // numero: number | undefined;
-
-  // receberOutput(msg: string) {
-  //   this.mensagemOutput = msg;
-  // }
-
-  // ngOnInit(){
-  //   this.route.queryParams.subscribe((params) => {
-  //     this.numero = (params['numero'])
-  // });
-  // }
-
-
+  novoCadastro() {
+    this.isShowMessage = false;
+    this.isSuccess = false;
+    this.mostrarSalvar = false;
+    this.form.reset();
+  }
 }

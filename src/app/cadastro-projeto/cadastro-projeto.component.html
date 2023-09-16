@@ -1,22 +1,31 @@
-<div style="display: flex; justify-content: center; align-items: center; min-height: 70vh;">
-    <form #form="ngForm" (ngSubmit)="salvarProjeto()" style="max-width: 400px;">
+<div
+        class="card-panel white-text"
+        [class.red]="!this.isSuccess"
+        [class.green]="this.isSuccess"
+        *ngIf="this.isShowMessage">
+        {{ this.message }}
+
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: center; min-height: 70vh;">
+    <form #form="ngForm" (ngSubmit)="salvarProjeto()" style="max-width: 400px; margin-top: 20px;">
       <div class="form-group">
         <label for="titulo">Título:</label>
         <input type="text" id="titulo" name="titulo" class="form-control" [(ngModel)]="projeto.titulo" required #titulo="ngModel" pattern="(?:\b[A-Z][a-zA-Z]*\b\s*)+">
         <div *ngIf="titulo.invalid && titulo.touched" class="text-danger">
           <div *ngIf="titulo.errors?.['required']">Título é obrigatório.</div>
           <div *ngIf="titulo.errors?.['pattern']">
-            Cada palavra deve começar com uma letra maiúscula.
+            Permitido somente letras e cada título deve iniciar com maiúscula.
           </div>
         </div> 
     </div>
       <div class="form-group">
         <label for="descricao">Descrição:</label>
-        <input type="text" id="descricao" name="descricao" class="form-control" [(ngModel)]="projeto.descricao" required #descricao="ngModel" pattern="^.{0,30}$">
+        <input type="text" id="descricao" name="descricao" class="form-control" [(ngModel)]="projeto.descricao" required #descricao="ngModel" pattern="^(?!\s*$).+$" maxlength="30">
         <div *ngIf="descricao.invalid && descricao.touched" class="text-danger">
           <div *ngIf="descricao.errors?.['required']">Descrição é obrigatório.</div>
           <div *ngIf="descricao.errors?.['pattern']">
-            Máximo 30 caracteres para descrição
+            Descrição é obrigatório.
           </div>
         </div> 
       </div>
@@ -55,12 +64,8 @@
         </div>
       </div>
       <div class="form-group" style="margin-top: 20px;">
-        <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Salvar</button>
+        <button type="submit" [disabled]="!form.valid" class="btn btn-primary" *ngIf="!mostrarSalvar">Salvar</button>
+        <button type="button" class="btn btn-secondary" *ngIf="mostrarSalvar" (click)="novoCadastro()">Novo Cadastro</button>
       </div>
      </form>
   </div>
-
-<!-- <p>{{mensagem}}</p>
-<app-detalhe-projeto (eventoOutput)="receberOutput($event)"></app-detalhe-projeto>
-<p>{{ mensagemOutput }}</p>
-<p>Atributo passado via query param = {{numero}}</p> -->

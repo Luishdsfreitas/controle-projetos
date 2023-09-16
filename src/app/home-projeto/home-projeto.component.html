@@ -1,9 +1,60 @@
+<div class="titulo-e-botao">
+  <h2 class="descricao" *ngIf="tabelaVisivel">Listagem de Projetos</h2>
+  <button class="botaoCadastro" type="button" routerLink="cadastro">
+    Cadastrar Projeto
+  </button>
+</div>
 
-    <button class="botaoCadastro" type="button" routerLink="cadastro">
-        Cadastrar Projeto
-    </button>
+<table *ngIf="tabelaVisivel">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Descrição</th>
+      <th>Data Inicial</th>
+      <th>Data Final</th>
+      <th>Orçamento</th>
+      <th>Número de Pessoas</th>
+      <th>Detalhes</th>
+      <th>Edição</th>
+      <th>Exclusão</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let projeto of projetos">
+      <td class="linha">{{ projeto.titulo }}</td>
+      <td class="linha">{{ projeto.descricao }}</td>
+      <td class="linha">
+        {{ projeto.previsaoDataInicial | date : "dd/MM/yyyy" }}
+      </td>
+      <td class="linha">
+        {{ projeto.previsaoDataFinal | date : "dd/MM/yyyy" }}
+      </td>
+      <td class="linha">{{ projeto.previsaoOrcamento | currency : "BRL" }}</td>
+      <td class="linha">{{ projeto.numeroPessoas }}</td>
+      <td class="linha">
+        <a [routerLink]="['/detalhes', projeto.id]" class="linha">
+          <i class="material-icons">details</i>
+        </a>
+      </td>
+      <td class="linha">
+        <a (click)="editarProjeto(projeto)">
+          <i class="material-icons icone-edit">edit</i>
+        </a>
+      </td>
+      <td class="linha">
+        <a></a>
+        <i
+          class="material-icons icone-delete"
+          (click)="deletarProjeto(projeto.id)"
+          >delete</i
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-    <!-- <app-cadastro-projeto [mensagem]="dadosPai"></app-cadastro-projeto> -->
+<div class="mensagem" *ngIf="!tabelaVisivel">Nenhum projeto cadastrado.</div>
 
-    
-
+<div class="icon-sentiment" *ngIf="!tabelaVisivel">
+  <i class="material-icons">sentiment_dissatisfied</i>
+</div>
