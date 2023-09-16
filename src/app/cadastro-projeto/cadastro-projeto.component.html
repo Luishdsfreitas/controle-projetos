@@ -21,11 +21,11 @@
     </div>
       <div class="form-group">
         <label for="descricao">Descrição:</label>
-        <input type="text" id="descricao" name="descricao" class="form-control" [(ngModel)]="projeto.descricao" required #descricao="ngModel" pattern="^.{0,30}$">
+        <input type="text" id="descricao" name="descricao" class="form-control" [(ngModel)]="projeto.descricao" required #descricao="ngModel" pattern="^(?!\s*$).+$" maxlength="30">
         <div *ngIf="descricao.invalid && descricao.touched" class="text-danger">
           <div *ngIf="descricao.errors?.['required']">Descrição é obrigatório.</div>
           <div *ngIf="descricao.errors?.['pattern']">
-            Máximo 30 caracteres para descrição
+            Descrição é obrigatório.
           </div>
         </div> 
       </div>

@@ -1,22 +1,3 @@
 {
-  "projetos": [
-    {
-      "id": 1,
-      "titulo": "Projeto Teste",
-      "descricao": "projeto teste",
-      "previsaoDataInicial": "2023-09-13",
-      "previsaoDataFinal": "2023-09-14",
-      "previsaoOrcamento": 10000,
-      "numeroPessoas": 12
-    },
-    {
-      "id": 2,
-      "titulo": "Projeto Teste Dois",
-      "descricao": "teste dois",
-      "previsaoDataInicial": "2023-09-16",
-      "previsaoDataFinal": "2025-06-11",
-      "previsaoOrcamento": 200000,
-      "numeroPessoas": 15
-    }
-  ]
+  "projetos": []
 }

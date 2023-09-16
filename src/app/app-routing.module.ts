@@ -6,6 +6,7 @@ import { DetalheProjetoComponent } from './detalhe-projeto/detalhe-projeto.compo
 
 const routes: Routes = [{path: '', component: HomeProjetoComponent},
                         {path: 'cadastro', component: CadastroProjetoComponent},
+                        {path: 'editar/:id', component: CadastroProjetoComponent},
                         {path: 'detalhes/:id', component: DetalheProjetoComponent}];
 
 

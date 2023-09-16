@@ -25,12 +25,27 @@ export class ProjetoService {
     return await response.json();
   }
 
+
   getTodosProjetos(): Observable<Projeto[]> {
     return this.http.get<Projeto[]>(this.baseUrl).pipe(
       catchError((error) => {
         console.error('Erro ao buscar projetos:', error);
         return throwError(
           'Ocorreu um erro ao buscar projetos. Por favor, tente novamente mais tarde.'
+        );
+      })
+    );
+  }
+
+  atualizarProjeto(projeto: Projeto): Observable<Projeto> {
+    const url = `${this.baseUrl}/${projeto.id}`;
+
+    return this.http.put<Projeto>(url, projeto)
+    .pipe(
+      catchError((error) => {
+        console.error('Erro ao atualizar projeto:', error);
+        return throwError(
+          'Ocorreu um erro ao atualizar o projeto. Por favor, tente novamente mais tarde.'
         );
       })
     );

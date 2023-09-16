@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProjetoService } from '../services/projeto.service';
 import { Projeto } from '../model/projeto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-projeto',
@@ -13,7 +14,7 @@ export class HomeProjetoComponent {
   erro: string = '';
   tabelaVisivel: boolean = false;
 
-  constructor(private projetoService: ProjetoService){}
+  constructor(private projetoService: ProjetoService, private router: Router){}
 
 
   ngOnInit() {
@@ -46,6 +47,10 @@ export class HomeProjetoComponent {
         alert(error);
       }
     );
+  }
+
+  editarProjeto(projeto: Projeto) {
+    this.router.navigate(['/editar', projeto.id]);
   }
 
 }
