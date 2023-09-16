@@ -15,6 +15,7 @@
       <th>Orçamento</th>
       <th>Número de Pessoas</th>
       <th>Detalhes</th>
+      <th>Edição</th>
       <th>Exclusão</th>
     </tr>
   </thead>
@@ -33,6 +34,11 @@
       <td class="linha">
         <a [routerLink]="['/detalhes', projeto.id]" class="linha">
           <i class="material-icons">details</i>
+        </a>
+      </td>
+      <td class="linha">
+        <a (click)="editarProjeto(projeto)">
+          <i class="material-icons icone-edit">edit</i>
         </a>
       </td>
       <td class="linha">
