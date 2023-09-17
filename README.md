@@ -16,6 +16,18 @@ Aplicação que permite empresa manter o controle de projetos
 ## Listagem de projetos
 - Retornar os projetos cadastrados
 
+## Edição de projetos
+- Permitir editar dados de um projeto cadastrado
+
+  ## Exclusão de projetos
+- Permitir excluir um projeto cadastrado
+
+  ## Endereço de Deploy - GitHub Pages
+- https://luishdsfreitas.github.io/controle-projetos/
+
+  ## Protótipo
+- https://www.figma.com/file/wbtTZvw2HZI9D8y6zwnb7z/controle-projetos?type=design&node-id=8%3A34&mode=design&t=HE59vuNnCTtSTfEx-1
+
 ## Tópicos/Checklist
 - [x] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
 - [x] Usar componentes de algum framework CSS (Bootstrap, Materialize ou outro).
