@@ -29,21 +29,21 @@ Aplicação que permite empresa manter o controle de projetos
 - https://www.figma.com/file/wbtTZvw2HZI9D8y6zwnb7z/controle-projetos?type=design&node-id=8%3A34&mode=design&t=HE59vuNnCTtSTfEx-1
 
   ## Manual de execução
-Clonar o repositório com git clone
-Fazer checkout no branch main que está em produção
-Abrir o projeto no editor Visual Studio Code (VS Code)
-Abrir um terminal pelo VSCode ou qualquer terminal do seu Sistema Operacional apontando para o diretório raiz do projeto
-Instalar as dependências contidas no package.json
-Comando: npm i
-Instalar o JSON Server globalmente disponível em https://www.npmjs.com/package/json-server
-Comando: npm i -g json-server
-Executar a API Fake (JSON Server) via um dos seguintes comandos:
-Execução via script registrado no package.json: npm run json:server:routes
-Ou via Execução explícita: json-server --watch db.json --routes routes.json
-O comando para execução do JSON Server deve ser aplicado no diretório raiz do projeto, ou seja, que contém o arquivo db.json e routes.json.
-Por padrão, a aplicação JSON Server executa no endereço localhost:3000
-Abrir um novo terminal pelo VSCode e então executar o projeto Angular
-Comando: ng s -o
+- Clonar o repositório com git clone
+- Fazer checkout no branch main que está em produção
+- Abrir o projeto no editor Visual Studio Code (VS Code)
+- Abrir um terminal pelo VSCode ou qualquer terminal do seu Sistema Operacional apontando para o diretório raiz do projeto
+- Instalar as dependências contidas no package.json
+- Comando: npm i
+- Instalar o JSON Server globalmente disponível em https://www.npmjs.com/package/json-server
+- Comando: npm i -g json-server
+- Executar a API Fake (JSON Server) via um dos seguintes comandos:
+- Execução via script registrado no package.json: npm run json:server:routes
+- Ou via Execução explícita: json-server --watch db.json --routes routes.json --port 3000
+- O comando para execução do JSON Server deve ser aplicado no diretório raiz do projeto, ou seja, que contém o arquivo db.json e routes.json.
+- Por padrão, a aplicação JSON Server executa no endereço localhost:3000
+- Abrir um novo terminal pelo VSCode e então executar o projeto Angular
+- Comando: ng s -o
 
 ## Tópicos/Checklist
 - [x] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
